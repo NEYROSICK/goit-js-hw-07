@@ -31,11 +31,14 @@ const handleClick = (event) => {
 
   instance.show();
 
-  document.addEventListener("keydown", (keyEvent) => {
+  const handleKeydown = (keyEvent) => {
     if (keyEvent.code === "Escape") {
       instance.close();
     }
-  });
+    document.removeEventListener("keydown", handleKeydown);
+  };
+
+  document.addEventListener("keydown", handleKeydown);
 };
 
 galleryListEl.addEventListener("click", handleClick);
